@@ -125,32 +125,32 @@ main();
 
 // onclick fuction for card
 
-async function getFolder(folder) {
-    const folderPath = folder + "/"
-    circle.value = 0;
+// async function getFolder(folder) {
+//     const folderPath = folder + "/"
+//     circle.value = 0;
 
-    // Get songs from folder
+//     // Get songs from folder
 
-    songs = await getSongs(folderPath);
-    currentSong.src = songs[0]
-    playSong(songs[0].split(`/songs/`)[1].replaceAll('%20', ' '), true)
+//     songs = await getSongs(folderPath);
+//     currentSong.src = songs[0]
+//     playSong(songs[0].split(`/songs/`)[1].replaceAll('%20', ' '), true)
 
-    let songUL = document.querySelector('.songList>div')
-    songUL.innerHTML = ''
+//     let songUL = document.querySelector('.songList>div')
+//     songUL.innerHTML = ''
 
-    for await (const song of songs) {
-        console.log(song, 'this is song log')
-        // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
-        let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
-        songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
-        <i class="fa-solid fa-radio radio"></i>
-        <div class="songDetails">
-            <ul> <li class="songName" id='songName'>${songN}</li> <li class="singerName">Pravin</li> </ul>
-        </div>
-        <i class="fa-solid fa-play " onclick="playSong('${song.replaceAll('%20', ' ').split('/songs/')[1]}')"></i>
-    </div>`
-    }
-}
+//     for await (const song of songs) {
+//         console.log(song, 'this is song log')
+//         // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
+//         let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
+//         songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
+//         <i class="fa-solid fa-radio radio"></i>
+//         <div class="songDetails">
+//             <ul> <li class="songName" id='songName'>${songN}</li> <li class="singerName">Pravin</li> </ul>
+//         </div>
+//         <i class="fa-solid fa-play " onclick="playSong('${song.replaceAll('%20', ' ').split('/songs/')[1]}')"></i>
+//     </div>`
+//     }
+// }
 
 // attach timeupdate event
 
