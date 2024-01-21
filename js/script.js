@@ -4,7 +4,33 @@ let songs;
 // get the list of all songs
 
 async function getSongs(folderPath) {
-    let a = await fetch(folderPath)
+    // let a = await fetch(folderPath)
+
+    const apiUrl = 'https://pantherp19.github.io/Spotify/songs/';
+    const accessToken = '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';
+
+    let a = await fetch(apiUrl, {
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+  },
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(userData => {
+    console.log('GitHub User Data:', userData);
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+
+
+
+
+    
     let responce = await a.text();
     let div = document.createElement('div')
     div.innerHTML = responce
