@@ -22,7 +22,7 @@ async function getSongs(folderPath) {
 // get folder list
 
 async function getFolders() {
-    let a = await fetch('/songs/')
+    let a = await fetch('../songs/')
     let responce = await a.text();
     let div = document.createElement('div')
     console.log(responce, 'this is getFolders function')
