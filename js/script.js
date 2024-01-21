@@ -23,9 +23,9 @@ async function getSongs(folderPath) {
 
 async function getFolders() {
     let a = await fetch('songs/')
+    console.log(a, 'this is getFolders function')
     let responce = await a.text();
     let div = document.createElement('div')
-    console.log(responce, 'this is getFolders function')
     div.innerHTML = responce
     let as = div.getElementsByTagName('a')
     let folders = []
