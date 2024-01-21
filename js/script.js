@@ -124,7 +124,7 @@ main();
 
 // onclick fuction for card
 
-async function getFolder(folder) {
+async function getFolders(folder) {
     const folderPath = folder + "/"
     circle.value = 0;
 
@@ -138,9 +138,9 @@ async function getFolder(folder) {
     songUL.innerHTML = ''
 
     for await (const song of songs) {
-        
-        let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
-        // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
+        console.log(song)
+        // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
+        let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
         songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
         <i class="fa-solid fa-radio radio"></i>
         <div class="songDetails">
