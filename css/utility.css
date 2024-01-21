@@ -1,0 +1,134 @@
+.border {
+    border: 2px solid blueviolet;
+    /* margin: 4px; */
+}
+
+.flex {
+    display: flex;
+}
+
+.justify {
+    justify-content: center;
+}
+
+.align {
+    align-items: center;
+}
+
+.bg-grey {
+    background-color: #121212;
+}
+
+.radius {
+    border-radius: 8px;
+}
+
+.m-1 {
+    margin: 7px;
+}
+
+.p-1 {
+    padding: 16px;
+}
+
+.p-2 {
+    padding: 10px;
+}
+
+.invert {
+    filter: invert(1);
+}
+
+/* resposive design */
+
+@media only screen and (max-width: 690px){
+    .p-1{
+        padding: 10px;
+    }
+
+    .m-1{
+        margin: 5px;
+    }
+}
+
+@media only screen and (max-width: 390px){
+    .p-1{
+        padding: 10px;
+    }
+
+    .m-1{
+        margin: 5px;
+    }
+}
+
+
+
+/* For WebKit browsers (Chrome, Safari) */
+
+::-webkit-scrollbar {
+    width: 4px;
+    display: none
+    /* You can adjust the width as needed */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 6px;
+    /* Black color for the thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #222;
+    border-radius: 6px;
+    /* Black color for the thumb */
+}
+
+/* For Firefox */
+/* Note: In Firefox, you can only set the color of the thumb, not the track */
+/* The track will take on the default browser scrollbar color */
+
+/* Specify the color for Firefox scrollbar thumb */
+body {
+    scrollbar-color: #000;
+}
+
+
+/* volume bar */
+
+/* .volume-container {
+    width: 100px;
+    text-align: center;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 7px 8px 10px 8px;
+    margin: auto;
+    height: 2px;
+    
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #1fdf64;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+
+input[type="range"]:focus {
+    outline: none;
+} */
