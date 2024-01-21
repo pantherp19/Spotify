@@ -25,6 +25,7 @@ async function getFolders() {
     let a = await fetch('/songs/')
     let responce = await a.text();
     let div = document.createElement('div')
+    console.log(responce, 'this is getFolders function')
     div.innerHTML = responce
     let as = div.getElementsByTagName('a')
     let folders = []
@@ -124,7 +125,7 @@ main();
 
 // onclick fuction for card
 
-async function getFolders(folder) {
+async function getFolder(folder) {
     const folderPath = folder + "/"
     circle.value = 0;
 
@@ -138,7 +139,7 @@ async function getFolders(folder) {
     songUL.innerHTML = ''
 
     for await (const song of songs) {
-        console.log(song)
+        console.log(song, 'this is song log')
         // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
         let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
         songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
