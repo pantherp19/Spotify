@@ -10,27 +10,23 @@ async function getSongs(folderPath) {
     const accessToken = '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';
 
     let a = await fetch(apiUrl, {
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-  },
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(userData => {
-    console.log('GitHub User Data:', userData);
-  })
-  .catch(error => {
-    console.error('Fetch error:', error);
-  });
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(userData => {
+            console.log('GitHub User Data:', userData);
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
 
-
-
-
-    
     let responce = await a.text();
     let div = document.createElement('div')
     div.innerHTML = responce
@@ -49,7 +45,6 @@ async function getSongs(folderPath) {
 
 async function getFolders() {
     let a = await fetch('/songs/')
-    console.log(a, 'this is getFolders function')
     let responce = await a.text();
     let div = document.createElement('div')
     div.innerHTML = responce
@@ -63,8 +58,6 @@ async function getFolders() {
     }
     return folders;
 }
-
-
 
 // main function of operations
 
@@ -102,6 +95,7 @@ async function main() {
             })
         }
     }
+
     // attach eventListener to play button
 
     play.addEventListener('click', () => {
@@ -151,32 +145,48 @@ main();
 
 // onclick fuction for card
 
-// async function getFolder(folder) {
-//     const folderPath = folder + "/"
-//     circle.value = 0;
+async function getFolder(folder) {
+    const folderPath = folder + "/"
 
-//     // Get songs from folder
+    async function getFolder(folder) {
+        const folderPath = folder + "/"
 
-//     songs = await getSongs(folderPath);
-//     currentSong.src = songs[0]
-//     playSong(songs[0].split(`/songs/`)[1].replaceAll('%20', ' '), true)
+        // Get songs from folder
 
-//     let songUL = document.querySelector('.songList>div')
-//     songUL.innerHTML = ''
+        songs = await getSongs(folderPath);
+        currentSong.src = songs[0]
+        playSong(songs[0].split(`/songs/`)[1].replaceAll('%20', ' '), true)
 
-//     for await (const song of songs) {
-//         console.log(song, 'this is song log')
-//         // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
-//         let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
-//         songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
-//         <i class="fa-solid fa-radio radio"></i>
-//         <div class="songDetails">
-//             <ul> <li class="songName" id='songName'>${songN}</li> <li class="singerName">Pravin</li> </ul>
-//         </div>
-//         <i class="fa-solid fa-play " onclick="playSong('${song.replaceAll('%20', ' ').split('/songs/')[1]}')"></i>
-//     </div>`
-//     }
-// }
+        let songUL = document.querySelector('.songList>div')
+        songUL.innerHTML = ''
+
+        for await (const song of songs) {
+            console.log(song, 'this is song log')
+            // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
+            let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
+            songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
+                <i class="fa-solid fa-radio radio"></i>
+                <div class="songDetails">
+                    <ul> <li class="songName" id='songName'>${songN}</li> <li class="singerName">Pravin</li> </ul>
+                </div>
+                <i class="fa-solid fa-play " onclick="playSong('${song.replaceAll('%20', ' ').split('/songs/')[1]}')"></i>
+            </div>`
+        }
+    }
+
+    for await (const song of songs) {
+
+        // let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('//')[1]
+        let songN = song.replaceAll('%20', ' ').split('songs/')[1].split('/')[1]
+        songUL.innerHTML = songUL.innerHTML + `<div class="libraryList flex">
+        <i class="fa-solid fa-radio radio"></i>
+        <div class="songDetails">
+            <ul> <li class="songName" id='songName'>${songN}</li> <li class="singerName">Pravin</li> </ul>
+        </div>
+        <i class="fa-solid fa-play " onclick="playSong('${song.replaceAll('%20', ' ').split('/songs/')[1]}')"></i>
+    </div>`
+    }
+}
 
 // attach timeupdate event
 
@@ -188,7 +198,6 @@ currentSong.addEventListener('timeupdate', () => {
     circle.value = (currentSong.currentTime / currentSong.duration) * 100;
 })
 
-
 // play the songs
 
 function playSong(song, pause = false) {
@@ -199,9 +208,6 @@ function playSong(song, pause = false) {
     }
     document.querySelector('.songinfo').innerHTML = song.split('//')[1];
 }
-
-
-
 
 // attach event listener to seekbar
 
@@ -232,6 +238,5 @@ function secondsToMinutes(seconds) {
     const remainingSeconds = Math.floor(seconds % 60);
     const minutesString = String(minutes).padStart(2, '0');
     const secondsString = String(remainingSeconds).padStart(2, '0');
-
     return `${minutesString}:${secondsString}`;
 }
